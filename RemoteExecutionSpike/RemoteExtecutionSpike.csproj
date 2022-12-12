@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0-windows10.0.20348.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <!--<ItemGroup>
+    <Reference Include="Interop.UIAutomationCore">
+      <HintPath>..\InteropDummy\bin\$(Configuration)\net6.0\Interop.UIAutomationCore.dll</HintPath>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </Reference>
+    
+    <Reference Include="Interop.UIAutomationClient">
+      <HintPath>..\UIAAssemblies\Win10.17713\Interop.UIAutomationClient.dll</HintPath>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </Reference>
+  </ItemGroup>-->
+
+  <ItemGroup>
+    <Reference Include="Interop.UIAutomationCore">
+      <!--<HintPath>..\InteropDummy\bin\$(Configuration)\net6.0\Interop.UIAutomationCore.dll</HintPath>-->
+      <HintPath>..\UIAAssemblies\Updated\Interop.UIAutomationCore.dll</HintPath>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </Reference>
+
+    <Reference Include="Interop.UIAutomationClient">
+      <HintPath>..\UIAAssemblies\Updated\Interop.UIAutomationClient.dll</HintPath>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.0.1" />
+  </ItemGroup>
+
+</Project>
