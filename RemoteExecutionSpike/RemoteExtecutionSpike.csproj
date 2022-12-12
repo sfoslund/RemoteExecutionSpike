@@ -9,12 +9,12 @@
 
   <ItemGroup>
     <Reference Include="Interop.UIAutomationCore">
-      <HintPath>..\UIAAssemblies\Updated\Interop.UIAutomationCore.dll</HintPath>
+      <HintPath>..\UIAAssemblies\10.0.22000.194\Interop.UIAutomationCore.dll</HintPath>
       <EmbedInteropTypes>true</EmbedInteropTypes>
     </Reference>
 
     <Reference Include="Interop.UIAutomationClient">
-      <HintPath>..\UIAAssemblies\Updated\Interop.UIAutomationClient.dll</HintPath>
+      <HintPath>..\UIAAssemblies\10.0.22000.194\Interop.UIAutomationClient.dll</HintPath>
       <EmbedInteropTypes>true</EmbedInteropTypes>
     </Reference>
   </ItemGroup>
