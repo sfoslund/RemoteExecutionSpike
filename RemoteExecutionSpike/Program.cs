@@ -17,20 +17,25 @@ namespace RemoteExecutionSpike
         private static void RemoteExecution()
         {
             CoreAutomationRemoteOperation coreOp = new CoreAutomationRemoteOperation();
+            IUIAutomation uia = new CUIAutomation8();
+            var focusedElement = uia.GetFocusedElement();
+            var name = focusedElement.CurrentName;
 
-            var instructions = GetInstructions();
-            var pinndeObj = GCHandle.Alloc(instructions, GCHandleType.Pinned);
-            IntPtr dataPointer = (nint)pinndeObj;
+            // OPTION 1
+            var element = focusedElement as object as AutomationElement; // This is null even when focusedElement is not
 
-            // Unhandled exception. System.Runtime.InteropServices.COMException (0x8000FFFF): Catastrophic failure (0x8000FFFF (E_UNEXPECTED))
-            var executionResult = coreOp.Execute(instructions);//dataPointer as object as byte[]);
-            Console.WriteLine("Execution status: " + executionResult.Status);
-        }
+            // OPTION 2
+            //var pinndeObj = GCHandle.Alloc(focusedElement, GCHandleType.Normal);
+            //var ptr = GCHandle.ToIntPtr(pinndeObj);
+            // TODO throws-> System.AccessViolationException: 'Attempted to read or write protected memory. This is often an indication that other memory is corrupt.'
+            //var element = AutomationElement.FromAbi(ptr); 
 
-        private static byte[] GetInstructions()
-        {
-            byte[] arr = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x4c, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x4d, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00 };
-            return arr;
+
+            var elementId = new AutomationRemoteOperationOperandId(0);
+
+            // TODO throws-> System.AccessViolationException: 'Attempted to read or write protected memory. This is often an indication that other memory is corrupt.'
+            coreOp.ImportElement(elementId, element); 
+
         }
     }
 }
